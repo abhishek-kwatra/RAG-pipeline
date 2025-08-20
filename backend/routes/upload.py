@@ -23,6 +23,14 @@ async def upload_pdfs(files: list[UploadFile] = File(...)):
         if not file.filename.endswith(".pdf"):
             raise HTTPException(status_code=400, detail=f"{file.filename} is not a PDF file.")
 
+        # Check if file already exists
+        cur.execute("SELECT id FROM documents WHERE filename = %s;", (file.filename,))
+        existing_doc = cur.fetchone()
+        if existing_doc:
+            cur.close()
+            conn.close()
+            return {"message": f"File {file.filename} is already present."}
+
         pdf_data = await file.read()
         with fitz.open(stream=pdf_data, filetype="pdf") as doc:
             if len(doc) > 1000:
@@ -30,7 +38,7 @@ async def upload_pdfs(files: list[UploadFile] = File(...)):
 
             text = "".join([page.get_text() for page in doc])
 
-            # Inserting into documents table
+            # Insert new document
             cur.execute(
                 "INSERT INTO documents (filename, pages) VALUES (%s, %s) RETURNING id;",
                 (file.filename, len(doc))
@@ -41,16 +49,16 @@ async def upload_pdfs(files: list[UploadFile] = File(...)):
         embeddings = embed_chunks(chunks)
 
         for chunk, embedding in zip(chunks, embeddings):
-            new_id = str(uuid.uuid4()) 
+            new_id = str(uuid.uuid4())
             
-            res = collection.data.insert(
+            # Insert into Weaviate
+            collection.data.insert(
                 properties={"text": chunk, "source": file.filename},
                 vector=embedding,
-                uuid = new_id
+                uuid=new_id
             )
-            
 
-            # Inserting into chunks table
+            # Insert into chunks table
             cur.execute(
                 "INSERT INTO chunks (doc_id, text, vector_id) VALUES (%s, %s, %s);",
                 (document_id, chunk, new_id)
