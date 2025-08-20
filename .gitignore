@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Pip environment
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Project & Package Files
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Environment Variables & Secrets
+.env
+.env.*
+
+# Docker
+*.pid
+*.seed
+*.bak
+*.tar
+docker-compose.override.yml
+.dockerignore
+Dockerfile*
+
+# Test & Coverage
+.pytest_cache/
+.cache/
+coverage.xml
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+test-results/
+*.cover
+*.py,cover
+
+
+
+# Data & Artifacts (Optional - adjust as needed)
+*.sqlite3
+*.db
+*.log
+*.csv
+*.tsv
+*.jsonl
+*.h5
+*.pt
+*.bin
+*.ckpt
+*.onnx
+models/
+data/
+outputs/

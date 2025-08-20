@@ -1,0 +1,78 @@
+
+# RAG Pipeline
+
+A Retrieval-Augmented Generation (RAG) system built with FastAPI, Weaviate vector database, PostgreSQL, SentenceTransformers, and OpenAI LLMs.  
+The pipeline allows users to upload PDF documents, store them in a vector database, and enable question answering over the document content.
+
+---
+
+## Features
+- Upload up to 20 PDFs (max 1000 pages per file).
+- Automatic chunking & embedding of documents using SentenceTransformers (`all-MiniLM-L6-v2`).
+- Store embeddings in Weaviate Cloud for semantic search.
+- Metadata stored in PostgreSQL.
+- Query endpoint powered by OpenAI GPT models for contextual answers.
+- REST API with FastAPI:
+  - `/upload` → Upload documents.
+  - `/query` → Ask questions over documents.
+  - `/metadata` → Get processed document metadata.
+- Unit & integration tests included.
+
+
+---
+
+##  Tech Stack
+- Backend: FastAPI (Python 3.10+)
+- Vector DB: Weaviate (Cloud)
+- Relational DB**: PostgreSQL
+- Embeddings: SentenceTransformers (`all-MiniLM-L6-v2`)
+- LLM: OpenAI GPT
+- Containerization: Docker & Docker Compose
+- Testing: pytest, pytest-asyncio, httpx
+
+---
+
+##  Setup & Installation
+
+1. Clone the repository
+
+git clone https://github.com/abhishek-kwatra/RAG-pipeline.git
+cd rag-pipeline
+
+2. Create and activate a virtual environment
+
+python -m venv venv
+source venv/bin/activate   # Linux/Mac
+venv\Scripts\activate      # Windows
+
+3. Install dependencies
+
+pip install -r requirements.txt
+
+4. Configure environment variables
+
+Create a .env file in the root folder:
+
+	# Database
+	DB_HOST=localhost
+	DB_PORT=5432
+	DB_NAME=rag_db
+	DB_USER=postgres
+	DB_PASSWORD=yourpassword
+
+	# Weaviate Cloud
+	WEAVIATE_URL=https://your-weaviate-instance.weaviate.network
+	WEAVIATE_API_KEY=your-api-key
+
+	# OpenAI
+	OPENAI_API_KEY=your-openai-api-key
+
+5. Run locally:
+	
+	uvicorn backend.app:app --reload
+
+Run with Docker (optional)
+docker build -t rag-pipeline .
+docker run -p 8000:8000 --env-file .env rag-pipeline
+
+
