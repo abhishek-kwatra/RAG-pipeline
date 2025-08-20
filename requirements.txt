@@ -1,6 +1,5 @@
 faiss_cpu == 1.12.0
 fastapi == 0.116.1
-fitz == 0.0.1.dev2
 numpy == 2.3.2
 openai == 1.100.2
 psycopg2 == 2.9.10
@@ -10,3 +9,6 @@ pytest == 8.4.1
 httpx == 0.28.1
 reportlab == 4.4.3
 pytest-asyncio == 1.1.0
+dotenv == 0.9.9
+PyMuPDF == 1.26.3
+python-multipart
