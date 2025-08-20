@@ -31,6 +31,20 @@ The pipeline allows users to upload PDF documents, store them in a vector databa
 - Testing: pytest, pytest-asyncio, httpx
 
 ---
+## 🧪 API Endpoints
+
+### 🌐 Base URL
+	http://127.0.0.1:8000/
+
+### 📚 Available Endpoints
+
+| Method | Endpoint                                 | Description                      								|
+|--------|------------------------------------------|---------------------------------------------------------------|
+| POST   | `/upload`                                | Accepts input data or a PDF file upload (multipart/form-data) |
+| POST   | `/query`                                 | Accepts a question via the `question` URL query parameter     |
+| GET    | `metadata/Application Layer.pdf`         | Get meta data about the file     								|
+
+---
 
 ##  Setup & Installation
 
