@@ -23,7 +23,7 @@ The pipeline allows users to upload PDF documents, store them in a vector databa
 ##  Tech Stack
 - Backend: FastAPI (Python 3.10+)
 - Vector DB: Weaviate (Cloud)
-- Relational DB**: PostgreSQL
+- Relational DB: Supabase
 - Embeddings: SentenceTransformers (`all-MiniLM-L6-v2`)
 - LLM: OpenAI GPT
 - Containerization: Docker & Docker Compose
