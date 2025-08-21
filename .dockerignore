@@ -1,0 +1,20 @@
+# Ignore virtual environments
+venv/
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore git files
+.git
+.gitignore
+
+# Ignore OS/system files
+.DS_Store
+Thumbs.db
+
+# Ignore big files
+*.pdf
+*.tar
+*.zip
