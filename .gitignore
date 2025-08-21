@@ -43,7 +43,7 @@ Thumbs.db
 *.tar
 docker-compose.override.yml
 .dockerignore
-Dockerfile*
+
 
 # Test & Coverage
 .pytest_cache/
