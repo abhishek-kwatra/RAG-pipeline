@@ -67,11 +67,8 @@ pip install -r requirements.txt
 Create a .env file in the root folder:
 
 	# Database
-	DB_HOST=localhost
-	DB_PORT=5432
-	DB_NAME=rag_db
-	DB_USER=postgres
-	DB_PASSWORD=yourpassword
+	SUPABASE_URL=your-url
+	SUPABASE_KEY=key
 
 	# Weaviate Cloud
 	WEAVIATE_URL=https://your-weaviate-instance.weaviate.network
